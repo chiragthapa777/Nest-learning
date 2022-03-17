@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post, Delete, Param } from "@nestjs/common";
 import { User } from "./interface/uesr";
 import { UserService } from "./user.service";
 
@@ -24,5 +24,10 @@ export class UserController{
     @Get("getusers")
     getUsers():string{
         return this.userService.getUsers()
+    }
+    @Delete("deleteuser/:email")
+    deleteUsers(@Param() email:{email:string}):string{
+        let users= this.userService.deleteUser(email.email)
+        return JSON.stringify(users)
     }
 }

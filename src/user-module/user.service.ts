@@ -1,4 +1,5 @@
-import { Injectable } from "@nestjs/common";
+import { ConsoleLogger, ForbiddenException, Injectable } from "@nestjs/common";
+import { json } from "node:stream/consumers";
 import { User } from "./interface/uesr";
 
 @Injectable()
@@ -13,5 +14,13 @@ export class UserService{
     }
     getUsers():string{
         return JSON.stringify(this.users)
+    }
+    deleteUser(email:string):User[]{
+        const exists=this.users.find(i=>i.email===email)
+        console.log(exists)
+        if(!exists) throw new ForbiddenException("email doesnot exists")
+        const newUsers=this.users.filter(item=>item.email!==email)
+        this.users=[...newUsers]
+        return newUsers
     }
 }
