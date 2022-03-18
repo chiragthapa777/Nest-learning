@@ -1,0 +1,3 @@
+using dto to validate the req body params using the class-validator
+and using pipes 
+you will also need class-transformer to use pipes with dto
