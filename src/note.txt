@@ -1,2 +1,4 @@
-More about controller
-@Req, @Res, @Query,@Body, @Header, @Params, @Header, @ReDirected ==>refer user controller
+middleware folder
+nestmiddleware
+nestmodule
+use().apply.forroutes()
